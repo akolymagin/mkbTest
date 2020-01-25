@@ -1,12 +1,11 @@
 package com.mcb.creditfactory.service.airplane;
 
-import com.mcb.creditfactory.dto.AirplaneDto;
+import com.mcb.creditfactory.dto.collateral.AirplaneDto;
 import com.mcb.creditfactory.external.CollateralObject;
 import com.mcb.creditfactory.external.CollateralType;
 import com.mcb.creditfactory.model.AirplaneCostEvaluation;
-import com.mcb.creditfactory.model.CarCostEvaluation;
 import com.mcb.creditfactory.repository.AirplaneCostEvaluationRepository;
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +13,16 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 @Service
-@AllArgsConstructor
+@NoArgsConstructor
 public class AirplaneAdapter implements CollateralObject {
     private AirplaneDto airplaneDto;
+
+    public void setAirplaneDto(AirplaneDto airplaneDto) {
+        this.airplaneDto = airplaneDto;
+    }
 
     @Autowired
     private AirplaneCostEvaluationRepository airplaneCostEvaluationRepository;

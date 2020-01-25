@@ -1,6 +1,6 @@
 package com.mcb.creditfactory.service.car;
 
-import com.mcb.creditfactory.dto.CarDto;
+import com.mcb.creditfactory.dto.collateral.CarDto;
 import com.mcb.creditfactory.external.ExternalApproveService;
 import com.mcb.creditfactory.model.Car;
 import com.mcb.creditfactory.repository.CarRepository;
@@ -19,7 +19,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean approve(CarDto dto) {
-        return approveService.approve(new CarAdapter(dto)) == 0;
+        CarAdapter carAdapter = new CarAdapter();
+        carAdapter.setCar(dto);
+        return approveService.approve(carAdapter) == 0;
     }
 
     @Override

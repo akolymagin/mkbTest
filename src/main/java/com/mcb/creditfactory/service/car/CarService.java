@@ -1,6 +1,6 @@
 package com.mcb.creditfactory.service.car;
 
-import com.mcb.creditfactory.dto.CarDto;
+import com.mcb.creditfactory.dto.collateral.CarDto;
 import com.mcb.creditfactory.model.Car;
 
 import java.util.Optional;

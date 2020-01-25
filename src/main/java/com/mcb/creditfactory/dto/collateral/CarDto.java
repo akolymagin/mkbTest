@@ -1,4 +1,4 @@
-package com.mcb.creditfactory.dto;
+package com.mcb.creditfactory.dto.collateral;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.AllArgsConstructor;
