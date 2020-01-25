@@ -12,16 +12,20 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
+
 @Service
 @AllArgsConstructor
 public class AirplaneAdapter implements CollateralObject {
-      private AirplaneDto airplaneDto;
+    private AirplaneDto airplaneDto;
 
-      @Autowired
-      private AirplaneCostEvaluationRepository airplaneCostEvaluationRepository;
-
+    @Autowired
+    private AirplaneCostEvaluationRepository airplaneCostEvaluationRepository;
 
 
     @Override
@@ -29,31 +33,31 @@ public class AirplaneAdapter implements CollateralObject {
 
         Long id = airplaneDto.getId();
         Iterable<AirplaneCostEvaluation> allByAirplaneId = airplaneCostEvaluationRepository.findAllByAirplaneId(id);
-        Iterator<AirplaneCostEvaluation> iterator = allByAirplaneId.iterator();
-        Date lastDate = new Date(0);
-        while (iterator.hasNext()){
-            AirplaneCostEvaluation next = iterator.next();
-            Date date = next.getDate();
-            if(date.after(lastDate)){
-                lastDate=date;
-            }
-        }
-//        allByAirplaneId.spliterator();
-        return null;
+
+        return StreamSupport.stream(allByAirplaneId.spliterator(), false)
+                .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
+                .orElseThrow(IllegalArgumentException::new).getValue();
     }
 
     @Override
     public Short getYear() {
-        return null;
+        return airplaneDto.getYear();
     }
 
     @Override
     public LocalDate getDate() {
-        return null;
+
+        return StreamSupport.stream(airplaneCostEvaluationRepository
+                .findAllByAirplaneId(airplaneDto.getId()).spliterator(), false)
+                .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
+                .orElseThrow(IllegalArgumentException::new).getDate()
+                .toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 
     @Override
     public CollateralType getType() {
-        return null;
+        return CollateralType.AIRPLANE;
     }
 }
