@@ -1,5 +1,6 @@
 package com.mcb.creditfactory.dto.collateralCostEvaluation;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,5 +17,6 @@ public class CarCostEvaluationDto implements CostEvaluation {
     private Long id;
     private Long carId;
     private BigDecimal value;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
 }

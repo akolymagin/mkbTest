@@ -29,9 +29,12 @@ public class CarAdapter implements CollateralObject {
     public BigDecimal getValue() {
         Long id = car.getId();
         Iterable<CarCostEvaluation> allByCarId = carCostEvaluationRepository.findAllByCarId(id);
-        return StreamSupport.stream(allByCarId.spliterator(), false)
-                .max(Comparator.comparing(CarCostEvaluation::getDate))
-                .orElseThrow(IllegalArgumentException::new).getValue();
+        if (allByCarId.iterator().hasNext()) {
+            return StreamSupport.stream(allByCarId.spliterator(), false)
+                    .max(Comparator.comparing(CarCostEvaluation::getDate))
+                    .orElseThrow(IllegalArgumentException::new).getValue();
+        }
+        else return car.getFirstValue();
     }
 
     @Override

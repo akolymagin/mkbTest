@@ -33,10 +33,12 @@ public class AirplaneAdapter implements CollateralObject {
 
         Long id = airplaneDto.getId();
         Iterable<AirplaneCostEvaluation> allByAirplaneId = airplaneCostEvaluationRepository.findAllByAirplaneId(id);
-
-        return StreamSupport.stream(allByAirplaneId.spliterator(), false)
-                .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
-                .orElseThrow(IllegalArgumentException::new).getValue();
+        if (allByAirplaneId.iterator().hasNext()) {
+            return StreamSupport.stream(allByAirplaneId.spliterator(), false)
+                    .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
+                    .orElseThrow(IllegalArgumentException::new).getValue();
+        }
+        else return airplaneDto.getFirstValue();
     }
 
     @Override
@@ -46,14 +48,24 @@ public class AirplaneAdapter implements CollateralObject {
 
     @Override
     public LocalDate getDate() {
-
-        return StreamSupport.stream(airplaneCostEvaluationRepository
-                .findAllByAirplaneId(airplaneDto.getId()).spliterator(), false)
-                .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
-                .orElseThrow(IllegalArgumentException::new).getDate()
-                .toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
+        if (airplaneCostEvaluationRepository
+                .findAllByAirplaneId(airplaneDto.getId())
+                .iterator().hasNext()
+        ) {
+            return StreamSupport.stream(airplaneCostEvaluationRepository
+                    .findAllByAirplaneId(airplaneDto.getId()).spliterator(), false)
+                    .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
+                    .orElseThrow(IllegalArgumentException::new).getDate()
+                    .toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+        }
+        else {
+            return airplaneDto.getDateOfFirstValue()
+                    .toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+        }
     }
 
     @Override

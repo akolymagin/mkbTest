@@ -17,15 +17,18 @@ public class CarServiceImpl implements CarService {
     @Autowired
     private CarRepository carRepository;
 
+    @Autowired
+    private CarAdapter carAdapter;
+
     @Override
     public boolean approve(CarDto dto) {
-        CarAdapter carAdapter = new CarAdapter();
         carAdapter.setCar(dto);
         return approveService.approve(carAdapter) == 0;
     }
 
     @Override
     public Car save(Car car) {
+
         return carRepository.save(car);
     }
 
@@ -41,20 +44,19 @@ public class CarServiceImpl implements CarService {
                 dto.getBrand(),
                 dto.getModel(),
                 dto.getPower(),
-                dto.getYear(),
-                dto.getValue()
+                dto.getYear()
         );
     }
 
     @Override
     public CarDto toDTO(Car car) {
+
         return new CarDto(
                 car.getId(),
                 car.getBrand(),
                 car.getModel(),
                 car.getPower(),
-                car.getYear(),
-                car.getValue()
+                car.getYear()
         );
     }
 

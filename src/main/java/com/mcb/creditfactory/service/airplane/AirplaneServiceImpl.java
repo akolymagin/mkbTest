@@ -11,17 +11,19 @@ import java.util.Optional;
 
 @Service
 public class AirplaneServiceImpl implements AirplaneService {
-     @Autowired
-     private AirplaneRepository airplaneRepository;
+    @Autowired
+    private AirplaneRepository airplaneRepository;
 
-     @Autowired
-     private ExternalApproveService externalApproveService;
+    @Autowired
+    private ExternalApproveService externalApproveService;
+
+    @Autowired
+    AirplaneAdapter airplaneAdapter;
 
     @Override
     public boolean approve(AirplaneDto dto) {
-        AirplaneAdapter airplaneAdapter = new AirplaneAdapter();
         airplaneAdapter.setAirplaneDto(dto);
-        return externalApproveService.approve(airplaneAdapter)==0;
+        return externalApproveService.approve(airplaneAdapter) == 0;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class AirplaneServiceImpl implements AirplaneService {
                 dto.getModel(),
                 dto.getManufacturer(),
                 dto.getYear(),
-                dto.getFuelCapacity(),
+                dto.getCapacity(),
                 dto.getSeats()
         );
     }
@@ -57,8 +59,9 @@ public class AirplaneServiceImpl implements AirplaneService {
                 airplane.getModel(),
                 airplane.getManufacturer(),
                 airplane.getYear(),
-                airplane.getFuelCapacity(),
+                airplane.getCapacity(),
                 airplane.getSeats()
+
         );
     }
 

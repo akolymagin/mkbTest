@@ -7,8 +7,6 @@ import com.mcb.creditfactory.dto.collateralCostEvaluation.AirplaneCostEvaluation
 import com.mcb.creditfactory.dto.collateralCostEvaluation.CarCostEvaluationDto;
 import com.mcb.creditfactory.dto.collateralCostEvaluation.CostEvaluation;
 import com.mcb.creditfactory.model.CarCostEvaluation;
-import com.mcb.creditfactory.repository.AirplaneCostEvaluationRepository;
-import com.mcb.creditfactory.repository.CarCostEvaluationRepository;
 import com.mcb.creditfactory.service.airplane.AirplaneService;
 import com.mcb.creditfactory.service.car.CarService;
 import com.mcb.creditfactory.service.costEvaluation.AirplaneCostEvaluationService;
@@ -16,6 +14,7 @@ import com.mcb.creditfactory.service.costEvaluation.CarCostEvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 // TODO: reimplement this
@@ -43,13 +42,21 @@ public class CollateralService {
             if (!approved) {
                 return null;
             }
-
-
-            return Optional.of(car)
+            Long result = Optional.of(car)
                     .map(carService::fromDto)
                     .map(carService::save)
                     .map(carService::getId)
                     .orElse(null);
+
+            CarCostEvaluation costEvaluation = new CarCostEvaluation();
+            costEvaluation.setCarId(car.getId());
+            costEvaluation.setValue(car.getFirstValue());
+            costEvaluation.setDate(car.getDateOfFirstValue());
+            Optional.of(costEvaluation)
+                    .map(carCostEvaluationService::save)
+                    .orElseThrow(IllegalArgumentException::new);
+
+            return result;
         }
 
         if (object instanceof AirplaneDto) {

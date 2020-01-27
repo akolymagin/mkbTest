@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 
 public class Airplane {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String brand;
@@ -27,19 +27,9 @@ public class Airplane {
     @Column(name = "year_of_issue")
     private Short year;
 
-    @Column(name = "fuelCapacity")
-    private int fuelCapacity;
-
-    private int seats;
-
-
+//    @Column(name = "fuelCapacity")
+    private Double capacity;
 //
-//    id IDENTITY primary key,
-//    brand VARCHAR2(150),
-//    model VARCHAR2(200),
-//    manufacturer VARCHAR2(500),
-//    year_of_issue YEAR,
-//    fuelCapacity INT,
-//    seats INT
+    private Long seats;
 
 }
