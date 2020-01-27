@@ -38,7 +38,7 @@ public class AirplaneAdapter implements CollateralObject {
                     .max(Comparator.comparing(AirplaneCostEvaluation::getDate))
                     .orElseThrow(IllegalArgumentException::new).getValue();
         }
-        else return airplaneDto.getFirstValue();
+        else return airplaneDto.getValue();
     }
 
     @Override

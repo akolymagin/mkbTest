@@ -14,7 +14,6 @@ import com.mcb.creditfactory.service.costEvaluation.CarCostEvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 // TODO: reimplement this
@@ -50,7 +49,7 @@ public class CollateralService {
 
             CarCostEvaluation costEvaluation = new CarCostEvaluation();
             costEvaluation.setCarId(car.getId());
-            costEvaluation.setValue(car.getFirstValue());
+            costEvaluation.setValue(car.getValue());
             costEvaluation.setDate(car.getDateOfFirstValue());
             Optional.of(costEvaluation)
                     .map(carCostEvaluationService::save)

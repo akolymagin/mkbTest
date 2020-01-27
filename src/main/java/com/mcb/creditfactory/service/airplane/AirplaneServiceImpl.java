@@ -60,7 +60,8 @@ public class AirplaneServiceImpl implements AirplaneService {
                 airplane.getManufacturer(),
                 airplane.getYear(),
                 airplane.getCapacity(),
-                airplane.getSeats()
+                airplane.getSeats(),
+                airplaneAdapter.getValue()
 
         );
     }

@@ -34,7 +34,7 @@ public class CarAdapter implements CollateralObject {
                     .max(Comparator.comparing(CarCostEvaluation::getDate))
                     .orElseThrow(IllegalArgumentException::new).getValue();
         }
-        else return car.getFirstValue();
+        else return car.getValue();
     }
 
     @Override

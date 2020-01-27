@@ -56,7 +56,8 @@ public class CarServiceImpl implements CarService {
                 car.getBrand(),
                 car.getModel(),
                 car.getPower(),
-                car.getYear()
+                car.getYear(),
+                carAdapter.getValue()
         );
     }
 

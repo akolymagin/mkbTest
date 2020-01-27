@@ -16,12 +16,13 @@ import java.util.Date;
 @JsonTypeName("car")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarDto implements Collateral {
-    public CarDto(Long id, String brand, String model, Double power, Short year) {
+    public CarDto(Long id, String brand, String model, Double power, Short year, BigDecimal value) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.power = power;
         this.year = year;
+        this.value = value;
     }
 
     private Long id;
@@ -29,7 +30,7 @@ public class CarDto implements Collateral {
     private String model;
     private Double power;
     private Short year;
-    private BigDecimal firstValue;
+    private BigDecimal value;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateOfFirstValue;
 }

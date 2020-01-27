@@ -16,7 +16,7 @@ import java.util.Date;
 @JsonTypeName("airplane")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AirplaneDto implements Collateral {
-    public AirplaneDto(Long id, String brand, String model, String manufacturer, Short year, Double capacity, Long seats) {
+    public AirplaneDto(Long id, String brand, String model, String manufacturer, Short year, Double capacity, Long seats, BigDecimal value) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -24,6 +24,7 @@ public class AirplaneDto implements Collateral {
         this.year = year;
         this.capacity = capacity;
         this.seats = seats;
+        this.value = value;
     }
 
     private Long id;
@@ -33,7 +34,7 @@ public class AirplaneDto implements Collateral {
     private Short year;
     private Double capacity;
     private Long seats;
-    private BigDecimal firstValue;
+    private BigDecimal value;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateOfFirstValue;
 
