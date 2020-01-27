@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t        \"type\":\"car\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"power\": 145,\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"firstValue\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
+					"raw": "{\r\n\t        \"type\":\"car\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"power\": 145,\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"value\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,7 +57,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t        \"type\":\"airplane\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"manufacturer\": \"France\",\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"capacity\" : 300,\r\n\t\t\t\"seats\" : 450,\r\n\t\t\t\"firstValue\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
+					"raw": "{\r\n\t        \"type\":\"airplane\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"manufacturer\": \"France\",\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"capacity\" : 300,\r\n\t\t\t\"seats\" : 450,\r\n\t\t\t\"value\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
 					"options": {
 						"raw": {
 							"language": "json"
