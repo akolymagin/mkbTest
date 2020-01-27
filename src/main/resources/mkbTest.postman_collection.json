@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "b97e057f-274a-4ce4-bc77-acaddfbc0d39",
+		"name": "mkbTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "saveCar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t        \"type\":\"car\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"power\": 145,\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"firstValue\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8090/collateral/save",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"collateral",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveAirplane",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t        \"type\":\"airplane\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"manufacturer\": \"France\",\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"capacity\" : 300,\r\n\t\t\t\"seats\" : 450,\r\n\t\t\t\"firstValue\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8090/collateral/save",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"collateral",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAirplane",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t        \"type\":\"airplane\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"manufacturer\": \"France\",\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"capacity\" : 300,\r\n\t\t\t\"seats\" : 450,\r\n\t\t\t\"firstValue\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8090/collateral/info",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"collateral",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t        \"type\":\"car\",\r\n\t        \"id\": 15,\r\n\t\t\t\"brand\":\"Ups...\",\r\n\t\t\t\"model\":\"vay vay\",\r\n\t\t\t\"power\": 145,\r\n\t\t\t\"year\" : 2020,\r\n\t\t\t\"firstValue\":500000000,\r\n\t\t\t\"dateOfFirstValue\":\"2018-08-12\"\r\n\t\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8090/collateral/info",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"collateral",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCarCostEvaluation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"carCostEvaluation\",\n\t\"carId\" : 2,\n\t\"value\" : 3450000,\n\t\"date\" : \"2014-02-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8090//collateral/addCostEvaluation",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"",
+						"collateral",
+						"addCostEvaluation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addAirplaneCostEvaluation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t        \"type\":\"airplaneCostEvaluation\",\r\n\t        \"airplaneId\": 13,\r\n\t\t\t\"value\" : 3984765856,\r\n\t\t\t\"date\" : \"2005-01-17\"\r\n\t\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8090//collateral/addCostEvaluation",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"",
+						"collateral",
+						"addCostEvaluation"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
