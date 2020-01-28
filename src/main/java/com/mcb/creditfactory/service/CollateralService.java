@@ -6,6 +6,7 @@ import com.mcb.creditfactory.dto.collateral.Collateral;
 import com.mcb.creditfactory.dto.collateralCostEvaluation.AirplaneCostEvaluationDto;
 import com.mcb.creditfactory.dto.collateralCostEvaluation.CarCostEvaluationDto;
 import com.mcb.creditfactory.dto.collateralCostEvaluation.CostEvaluation;
+import com.mcb.creditfactory.model.AirplaneCostEvaluation;
 import com.mcb.creditfactory.model.CarCostEvaluation;
 import com.mcb.creditfactory.service.airplane.AirplaneService;
 import com.mcb.creditfactory.service.car.CarService;
@@ -64,13 +65,21 @@ public class CollateralService {
             if (!approved) {
                 return null;                                                                     
             }
-
-
-            return Optional.of(airplaneDto)
+            Long result = Optional.of(airplaneDto)
                     .map(airplaneService::fromDto)
                     .map(airplaneService::save)
                     .map(airplaneService::getId)
                     .orElse(null);
+
+            AirplaneCostEvaluation airplaneCostEvaluation = new AirplaneCostEvaluation();
+            airplaneCostEvaluation.setAirplaneId(airplaneDto.getId());
+            airplaneCostEvaluation.setDate(airplaneDto.getDateOfFirstValue());
+            airplaneCostEvaluation.setValue(airplaneDto.getValue());
+            Optional.of(airplaneCostEvaluation)
+                    .map(airplaneCostEvaluationService::save)
+                    .orElseThrow(IllegalArgumentException::new);
+
+            return result;
         }
 
         return null;
